@@ -25,7 +25,7 @@ export class ProductosService {
   resul: ResultadoProducto = null;
 
   constructor(private http: HttpClient) {
-    this.cargar_todos();
+   
   }
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
@@ -37,48 +37,21 @@ export class ProductosService {
       return of(result as T);
     };
   }
-  getProduct() {
-    // const url = `${URL_SERVICIOS}/${id}`;
-    /*const url = URL_SERVICIOS + '/productos/todos/' + this.pagina + '/' + this.cantPorpaginas;
-    const result = this.http.get<ResultadoProducto>(url).pipe(
-      tap(_ => console.log('ss')),
-      catchError(this.handleError<ResultadoProducto>(url))
-    );
-    this.resul = result;
-    console.log(result);*/
-  }
-  cargar_todos() {
+  
+  cargar_todos(): Producto[] {
 
-    /*const url = URL_SERVICIOS + 'productos/todos/' + this.pagina + '/' + this.cantPorpaginas;
-    this.http.get(url)
-    .map( res => res.json())
-    .subscribe( data => {
-      console.log(data);
-      if (data.error) {
-        // aqui hay un error
-      } else {
-       this.productos.push(...data.productos);
-       this.pagina += 1;
-
-      }
-    }
-
-    );
-    console.log(this._data[0].name);
-     */
-    const url = URL_SERVICIOS + '/productos/todos/' + this.pagina + '/' + this.cantPorpaginas;
-    const result = this.http.get(url).subscribe( data => {
-      // console.log(data);
-
+     const url = URL_SERVICIOS + '/productos/todos/' + this.pagina + '/' + this.cantPorpaginas;
+     const result = this.http.get(url).subscribe( data => {      
       if (data['error']) {
         console.log(data['error']);
       } else {
        this.productos.push(data['productos']);
        this.pagina += 1;
         console.log(this.productos);
-      }
-    }
-    );
+      }      
+     }
+     );
+    return  this.productos;
   }
 
 }
