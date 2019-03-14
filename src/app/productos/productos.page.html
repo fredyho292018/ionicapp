@@ -1,0 +1,39 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>productos</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list>
+        <ion-reorder-group disabled="false">
+            <ion-item-sliding *ngFor="let animal of productos; let i=index">
+
+                <ion-item (click)="reproducir ( animal )">
+                    <ion-avatar slot="start">
+                        <img [src]="animal.imagen">
+                    </ion-avatar>
+                    <ion-label>{{animal.nombre}}</ion-label>
+
+                    <ion-icon *ngIf="!animal.reproduciendo" name="play" item-rigth></ion-icon>
+                    <ion-icon *ngIf="animal.reproduciendo" name="pause" item-rigth></ion-icon>
+                    <ion-reorder></ion-reorder>
+                </ion-item>
+
+                <ion-item-options side="end">
+                    <ion-item-option color="secondary" (click)="eliminar(i)">
+                        <ion-icon name="trash"> </ion-icon>
+                        Borrar
+
+                    </ion-item-option>
+
+                </ion-item-options>
+            </ion-item-sliding>
+        </ion-reorder-group>
+
+
+
+
+    </ion-list>
+
+</ion-content>

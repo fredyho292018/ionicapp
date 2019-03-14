@@ -1,12 +1,16 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>
+            Ionic Blank
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+    <ion-item>
+        <ion-input placeholder="Parametro" [(ngModel)]="valor"></ion-input>
+    </ion-item>
+    <ion-button expand="full" [routerLink]="['/pagina2',valor]">pagina 2 routerLink</ion-button>
+    <ion-button expand="full" (click)="segunda()">pagina 2 funcion</ion-button>
+    <ion-button expand="full" (click)="segundaNavC()">pagina 2 NavController</ion-button>
 </ion-content>
